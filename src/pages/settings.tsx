@@ -15,6 +15,7 @@ import avatar3 from "../images/Avatar-3.svg";
 import avatar4 from "../images/Avatar-4.svg";
 import avatar5 from "../images/Avatar-0.svg";
 import avatar6 from "../images/Avatar-1.svg";
+import UserList from "../components/UserList";
 
 const Settings = () => {
 	const tabList = [
@@ -62,7 +63,10 @@ const Settings = () => {
 				</div>
 			),
 		},
-		{ label: "Users on plan", key: "users" },
+		{
+			label: "Users on plan",
+			key: "users",
+		},
 		{
 			label: "",
 			key: "download",
@@ -76,6 +80,19 @@ const Settings = () => {
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: (
+				<UserList
+					imgList={[
+						avatar0,
+						avatar1,
+						avatar2,
+						avatar3,
+						avatar4,
+						avatar5,
+						avatar6,
+					]}
+				/>
+			),
 		},
 		{
 			invoice: "Basic Plan – Nov 2022",
