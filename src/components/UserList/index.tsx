@@ -1,4 +1,6 @@
 const UserList = ({ imgList }: { imgList: string[] }) => {
+	const limit = 5;
+
 	return (
 		<div className="flex flex-row items-center">
 			{imgList.map((item, ind) => (
@@ -9,7 +11,16 @@ const UserList = ({ imgList }: { imgList: string[] }) => {
 					}}
 				/>
 			))}
-			<div>+1</div>
+			{imgList.length > limit && (
+				<div
+					className="w-6 h-6 rounded-full border-[2px] border-white bg-white grid place-items-center"
+					style={{
+						transform: `translateX(-${6 + imgList.length * 6}px)`,
+					}}
+				>
+					+{imgList.length - limit}
+				</div>
+			)}
 		</div>
 	);
 };

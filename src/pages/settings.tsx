@@ -99,36 +99,50 @@ const Settings = () => {
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: (
+				<UserList
+					imgList={[avatar0, avatar1, avatar2, avatar3, avatar4, avatar5]}
+				/>
+			),
 		},
 		{
 			invoice: "Basic Plan – Oct 2022",
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: (
+				<UserList imgList={[avatar0, avatar1, avatar2, avatar3, avatar4]} />
+			),
 		},
 		{
 			invoice: "Basic Plan – Sep 2022",
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: <UserList imgList={[avatar0, avatar1, avatar2]} />,
 		},
 		{
 			invoice: "Basic Plan – Aug 2022",
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: <UserList imgList={[avatar0, avatar1, avatar2, avatar3]} />,
 		},
 		{
 			invoice: "Basic Plan – Jul 2022",
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: <UserList imgList={[avatar0, avatar1, avatar2]} />,
 		},
 		{
 			invoice: "Basic Plan – Jun 2022",
 			amount: "USD $10.00",
 			date: "Dec 1, 2022",
 			status: "Paid",
+			users: (
+				<UserList imgList={[avatar0, avatar1, avatar2, avatar3, avatar4]} />
+			),
 		},
 	];
 
