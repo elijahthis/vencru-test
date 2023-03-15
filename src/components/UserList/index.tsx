@@ -3,7 +3,7 @@ const UserList = ({ imgList }: { imgList: string[] }) => {
 
 	return (
 		<div className="flex flex-row items-center">
-			{imgList.map((item, ind) => (
+			{imgList.slice(0, 5).map((item, ind) => (
 				<img
 					src={item}
 					style={{
@@ -15,7 +15,7 @@ const UserList = ({ imgList }: { imgList: string[] }) => {
 				<div
 					className="w-6 h-6 rounded-full border-[2px] border-white bg-white grid place-items-center"
 					style={{
-						transform: `translateX(-${6 + imgList.length * 6}px)`,
+						transform: `translateX(-${2 + imgList.length * 6}px)`,
 					}}
 				>
 					+{imgList.length - limit}
