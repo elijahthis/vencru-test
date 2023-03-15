@@ -14,7 +14,7 @@ import {
 import UserInfo from "../UserInfo";
 import NavItem from "./NavItem";
 
-const Sidebar = () => {
+const Sidebar = ({ openNav }: { openNav: boolean }) => {
 	const navList1 = [
 		{ label: "Home", link: "/", icon: <HomeIcon /> },
 		{ label: "Dashboard", link: "/dashboard", icon: <DashIcon />, unread: 10 },
@@ -30,7 +30,11 @@ const Sidebar = () => {
 	];
 
 	return (
-		<aside className="hidden md:block  w-[280px] bg-white fixed top-0 left-0 h-screen py-8 px-6 overflow-y-auto hideScrollbar ">
+		<aside
+			className={` md:block  w-[280px] bg-white fixed md:top-0 md:left-0 h-screen py-8 px-6 overflow-y-auto hideScrollbar ${
+				openNav ? "left-0" : "left-[-100%]"
+			} transition-all duration-500`}
+		>
 			<img src={logo} alt="" className="mb-6" />
 			<SearchComponent />
 			<div className="flex flex-col items-stretch gap-2 mt-6 ">
