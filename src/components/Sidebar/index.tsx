@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import logo from "../../images/Logo.svg";
 import NewFeatureCard from "../NewFeatureCard";
 import SearchComponent from "../SearchComponent";
@@ -37,6 +37,7 @@ const Sidebar = ({ openNav, setOpenNav }: SidebarProps) => {
 	];
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
+	const [showNewFeature, setShowNewFeature] = useState(true);
 
 	useOutsideAlerter(wrapperRef, () => {
 		setOpenNav(false);
@@ -62,7 +63,9 @@ const Sidebar = ({ openNav, setOpenNav }: SidebarProps) => {
 				))}
 			</div>
 			<div className="pb-6 mb-6 border-b border-[#EAECF0]">
-				<NewFeatureCard />
+				{showNewFeature && (
+					<NewFeatureCard setShowNewFeature={setShowNewFeature} />
+				)}
 			</div>
 			<UserInfo />
 		</aside>
