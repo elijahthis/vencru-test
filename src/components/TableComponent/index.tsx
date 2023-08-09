@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import CheckBox from "../CheckBox";
+import { BottomArrow } from "../svgs";
 
 interface TableComponentProps {
 	data: any[];
@@ -19,6 +20,7 @@ const TableComponent = ({ data, columns }: TableComponentProps) => {
 							<div className="flex flex-row items-center gap-3 text-[#667085] font-medium text-xs">
 								{ind === 0 && <CheckBox />}
 								{column.label}
+								{ind === 0 && <BottomArrow style={{ marginLeft: "-8px" }} />}
 							</div>
 						</th>
 					))}
