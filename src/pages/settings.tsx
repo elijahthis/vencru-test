@@ -57,7 +57,7 @@ const Settings = () => {
 			label: "Status",
 			key: "status",
 			render: (
-				<div className="w-max flex flex-row items-center text-xs gap-1 text-[#12B76A] bg-[#ECFDF3] py-[2px] px-2 rounded-2xl">
+				<div className="w-max flex flex-row items-center text-xs font-medium gap-1 text-[#027A48] bg-[#ECFDF3] py-[2px] px-2 rounded-2xl">
 					<BsCheck2 color="#12B76A" />
 					<span>Paid</span>
 				</div>
@@ -147,26 +147,27 @@ const Settings = () => {
 	];
 
 	const [altEmail, setAltEmail] = useState("olivia@untitledui.com");
+	const [toDefaultEmail, setToDefaultEmail] = useState(true);
 	const [selectedCard, setSelectedCard] = useState(1);
 
 	return (
 		<div>
-			<div className="px-4 md:px-0">
+			<div className="px-4 lg:px-0">
 				<h3 className="mb-1">Settings</h3>
 				<p className="mb-6 text-base text-[#667085]">
 					Manage your team and preferences here.
 				</p>
 			</div>
-			<div className="px-0 md:px-0 w-full mb-8">
+			<div className="px-4 lg:px-0 w-full mb-8">
 				<ButtonTabs tabList={tabList} />
 			</div>
-			<div className="mx-4 pb-5 md:mx-0">
+			<div className="mx-4 pb-5 lg:mx-0">
 				<h4 className="mb-1">Payment method</h4>
 				<p className="text-[#667085]">
 					Update your billing details and address.
 				</p>
 			</div>
-			<div className="px-4 md:px-0 grid twoPartGrid pt-6 border-t border-[#EAECF0]">
+			<div className="px-4 lg:px-0 grid twoPartGrid pt-6 border-t border-[#EAECF0]">
 				<div>
 					<p className="text-sm font-medium">Contact email</p>
 					<p className="text-sm text-[#667085]">
@@ -176,7 +177,7 @@ const Settings = () => {
 				<div className="flex flex-col items-stretch gap-[18px] pb-5">
 					<Radio
 						name="email"
-						value={"actMail"}
+						id={"actMail"}
 						label={
 							<div>
 								<p className="text-[#344054] font-medium">
@@ -185,16 +186,22 @@ const Settings = () => {
 								<p className="text-[#667085]">olivia@untitledui.com</p>
 							</div>
 						}
+						checked={toDefaultEmail}
+						onChange={() => setToDefaultEmail(!toDefaultEmail)}
 					/>
 					<Radio
 						name="email"
-						value={"altMail"}
+						id={"altMail"}
 						label={
 							<div>
 								<p className="text-[#344054] font-medium mb-3">
 									Send to an alternative email
 								</p>
-								<div className="bg-white px-[14px] py-[9px] rounded-lg flex flex-row items-center gap-2 text-[#101828] border border-[#D0D5DD] rounded-lg">
+								<div
+									className={`bg-white px-[14px] py-[9px] rounded-lg flex flex-row items-center gap-2 text-[#101828] border border-[#D0D5DD] rounded-lg ${
+										toDefaultEmail ? "opacity-50" : ""
+									}`}
+								>
 									<MdOutlineMailOutline size={20} />
 									<input
 										type="text"
@@ -202,15 +209,18 @@ const Settings = () => {
 										id=""
 										value={altEmail}
 										onChange={(e) => setAltEmail(e.target.value)}
-										className="text-base bg-transparent outline-none"
+										className="text-base bg-transparent outline-none disabled:opacity-50"
+										disabled={toDefaultEmail}
 									/>
 								</div>
 							</div>
 						}
+						checked={!toDefaultEmail}
+						onChange={() => setToDefaultEmail(!toDefaultEmail)}
 					/>
 				</div>
 			</div>
-			<div className="px-4 md:px-0 grid twoPartGrid pt-6 border-t border-[#EAECF0] mb-8">
+			<div className="px-4 lg:px-0 grid twoPartGrid pt-6 border-t border-[#EAECF0] mb-8">
 				<div>
 					<p className="text-sm font-medium">Card details</p>
 					<p className="text-sm text-[#667085]">
@@ -231,17 +241,23 @@ const Settings = () => {
 					</div>
 				</div>
 			</div>
-			<div className="px-4 md:px-0 flex flex-col md:items-center justify-between gap-4 mb-6 md:flex-row md:items-center">
+			<div className="px-4 lg:px-0 flex flex-col lg:items-center justify-between gap-4 mb-6 lg:flex-row lg:items-center">
 				<h4>Billing history</h4>
 				<button className="flex flex-row items-center gap-2 py-[10px] px-4 bg-white border border-[#D0D5DD] rounded-lg w-max text-sm">
 					<FiDownloadCloud />
 					Download all
 				</button>
 			</div>
-			<div className="hidden md:table w-full">
+			<div
+				className="hidden lg:table w-full border border-gray-200 rounded-lg"
+				style={{
+					boxShadow:
+						"0px 2px 4px -2px rgba(16, 24, 40, 0.06), 0px 4px 8px -2px rgba(16, 24, 40, 0.10)",
+				}}
+			>
 				<TableComponent data={data} columns={columns} />
 			</div>
-			<div className="table md:hidden w-full">
+			<div className="table lg:hidden w-full">
 				<TableComponent
 					data={data.map((item) => ({
 						invoice: item.invoice,

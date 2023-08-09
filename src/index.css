@@ -22,3 +22,8 @@ code {
 	box-sizing: border-box;
 	border-color: unset;
 }
+
+*::selection {
+	background-color: #6941c6;
+	color: #ffffff;
+}

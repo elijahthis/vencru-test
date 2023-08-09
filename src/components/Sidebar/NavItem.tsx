@@ -1,11 +1,12 @@
-import { ReactNode } from "react";
+import { Dispatch, SetStateAction, ReactNode } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 interface NavItemProps {
 	navData: { label: string; link: string; icon: ReactNode; unread?: number };
+	setOpenNav: Dispatch<SetStateAction<boolean>>;
 }
 
-const NavItem = ({ navData }: NavItemProps) => {
+const NavItem = ({ navData, setOpenNav }: NavItemProps) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	console.log("location", location);
@@ -21,7 +22,10 @@ const NavItem = ({ navData }: NavItemProps) => {
 					? "bg-[#F9FAFB]"
 					: ""
 			}`}
-			onClick={() => navigate(navData.link)}
+			onClick={() => {
+				navigate(navData.link);
+				setOpenNav(false);
+			}}
 		>
 			{navData.icon}
 			<span>{navData.label}</span>

@@ -19,8 +19,8 @@ const PageLayout = () => {
 	return (
 		<main>
 			<Header openNav={openNav} setOpenNav={setOpenNav} />
-			<Sidebar openNav={openNav} />
-			<div className="bg-[#F9FAFB] min-h-screen px-0 py-8 mt-16 md:ml-[280px] md:mt-0 md:px-8 md:py-8">
+			<Sidebar openNav={openNav} setOpenNav={setOpenNav} />
+			<div className="bg-[#F9FAFB] min-h-screen px-0 py-8 mt-16 lg:ml-[280px] lg:mt-0 lg:px-8 lg:py-8">
 				<Outlet />
 			</div>
 		</main>

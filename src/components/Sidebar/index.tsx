@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction, useRef } from "react";
 import logo from "../../images/Logo.svg";
 import NewFeatureCard from "../NewFeatureCard";
 import SearchComponent from "../SearchComponent";
@@ -13,8 +14,14 @@ import {
 } from "../svgs";
 import UserInfo from "../UserInfo";
 import NavItem from "./NavItem";
+import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 
-const Sidebar = ({ openNav }: { openNav: boolean }) => {
+interface SidebarProps {
+	openNav: boolean;
+	setOpenNav: Dispatch<SetStateAction<boolean>>;
+}
+
+const Sidebar = ({ openNav, setOpenNav }: SidebarProps) => {
 	const navList1 = [
 		{ label: "Home", link: "/", icon: <HomeIcon /> },
 		{ label: "Dashboard", link: "/dashboard", icon: <DashIcon />, unread: 10 },
@@ -29,22 +36,29 @@ const Sidebar = ({ openNav }: { openNav: boolean }) => {
 		{ label: "Settings", link: "/settings", icon: <SettingsIcon /> },
 	];
 
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
+	useOutsideAlerter(wrapperRef, () => {
+		setOpenNav(false);
+	});
+
 	return (
 		<aside
-			className={` md:block  w-[280px] bg-white fixed md:top-0 md:left-0 h-screen py-8 px-6 overflow-y-auto hideScrollbar ${
+			className={` lg:block  w-[280px] bg-white fixed top-0 lg:top-0 lg:left-0 h-screen py-8 px-6 overflow-y-auto hideScrollbar ${
 				openNav ? "left-0" : "left-[-100%]"
-			} transition-all duration-500`}
+			} transition-all duration-500 z-20`}
+			ref={wrapperRef}
 		>
 			<img src={logo} alt="" className="mb-6" />
 			<SearchComponent />
 			<div className="flex flex-col items-stretch gap-2 mt-6 ">
 				{navList1.map((item) => (
-					<NavItem navData={item} />
+					<NavItem navData={item} setOpenNav={setOpenNav} />
 				))}
 			</div>
 			<div className="flex flex-col items-stretch gap-2 my-6 ">
 				{navList2.map((item) => (
-					<NavItem navData={item} />
+					<NavItem navData={item} setOpenNav={setOpenNav} />
 				))}
 			</div>
 			<div className="pb-6 mb-6 border-b border-[#EAECF0]">
