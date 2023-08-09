@@ -228,11 +228,12 @@ const Settings = () => {
 					</p>
 				</div>
 				<div className="flex flex-col items-stretch gap-3">
-					{cardList.map((cardItem) => (
+					{cardList.map((cardItem, ind) => (
 						<CardSelect
 							cardData={cardItem}
 							active={selectedCard === cardItem.id}
 							onSelect={() => setSelectedCard(cardItem.id)}
+							key={ind}
 						/>
 					))}
 					<div className="flex flex-row items-center gap-2 mt-1 cursor-pointer text-[#667085]">

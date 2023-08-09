@@ -9,6 +9,7 @@ const UserList = ({ imgList }: { imgList: string[] }) => {
 					style={{
 						transform: ind === 0 ? "" : `translateX(-${6 + ind * 6}px)`,
 					}}
+					key={ind}
 				/>
 			))}
 			{imgList.length > limit && (

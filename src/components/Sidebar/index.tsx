@@ -53,13 +53,13 @@ const Sidebar = ({ openNav, setOpenNav }: SidebarProps) => {
 			<img src={logo} alt="" className="mb-6" />
 			<SearchComponent />
 			<div className="flex flex-col items-stretch gap-2 mt-6 ">
-				{navList1.map((item) => (
-					<NavItem navData={item} setOpenNav={setOpenNav} />
+				{navList1.map((item, ind) => (
+					<NavItem navData={item} setOpenNav={setOpenNav} key={ind} />
 				))}
 			</div>
 			<div className="flex flex-col items-stretch gap-2 my-6 ">
-				{navList2.map((item) => (
-					<NavItem navData={item} setOpenNav={setOpenNav} />
+				{navList2.map((item, ind) => (
+					<NavItem navData={item} setOpenNav={setOpenNav} key={ind} />
 				))}
 			</div>
 			<div className="pb-6 mb-6 border-b border-[#EAECF0]">

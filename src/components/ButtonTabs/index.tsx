@@ -29,6 +29,7 @@ const ButtonTabs = ({ tabList }: ButtonTabsProps) => {
 							navigate({ hash: item.value });
 							console.log("location", location.hash.slice(1), item.value);
 						}}
+						key={ind}
 					>
 						{item.label}
 					</button>

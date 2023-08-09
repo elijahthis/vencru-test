@@ -13,10 +13,7 @@ const TableComponent = ({ data, columns }: TableComponentProps) => {
 			<thead>
 				<tr className="border-b border-[#EAECF0]">
 					{columns.map((column, ind) => (
-						<th
-							key={column.key}
-							className="py-[13px] px-6 bg-[#F9FAFB] text-left"
-						>
+						<th key={ind} className="py-[13px] px-6 bg-[#F9FAFB] text-left">
 							<div className="flex flex-row items-center gap-3 text-[#667085] font-medium text-xs">
 								{ind === 0 && <CheckBox />}
 								{column.label}
@@ -27,10 +24,10 @@ const TableComponent = ({ data, columns }: TableComponentProps) => {
 				</tr>
 			</thead>
 			<tbody className="bg-transparent">
-				{data.map((row) => (
-					<tr key={row.id} className="bg-white border-b border-[#EAECF0]">
+				{data.map((row, ind) => (
+					<tr key={ind} className="bg-white border-b border-[#EAECF0]">
 						{columns.map((column, ind) => (
-							<td key={column.key} className="py-[26px] px-6 text-left ">
+							<td key={ind} className="py-[26px] px-6 text-left ">
 								<div
 									className="flex flex-row items-center gap-3 text-sm "
 									style={{
