@@ -1,0 +1,47 @@
+.App {
+	font-family: "Inter";
+}
+
+h3 {
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 38px;
+	color: #101828;
+}
+
+h4 {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+p {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.hideScrollbar {
+	/* Hide scroll bar, but while still being able to scroll */
+
+	scrollbar-width: none;
+	scrollbar-color: transparent transparent;
+}
+.hideScrollbar::-webkit-scrollbar {
+	width: 1px;
+}
+.hideScrollbar::-webkit-scrollbar-track {
+	background: transparent;
+}
+.hideScrollbar::-webkit-scrollbar-thumb {
+	background-color: transparent;
+}
+
+@media (max-width: 768px) {
+	h3 {
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 32px;
+		color: #101828;
+	}
+}

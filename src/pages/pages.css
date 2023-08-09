@@ -1,0 +1,12 @@
+.twoPartGrid {
+	grid-template-columns: 280px 1fr;
+	gap: 2rem;
+}
+
+@media (max-width: 768px) {
+	.twoPartGrid {
+		display: grid;
+		grid-template-columns: unset;
+		gap: 20px;
+	}
+}
